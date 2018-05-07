@@ -1,0 +1,99 @@
+header{
+    background-color: cadetblue;
+    top: 0;
+    width: 100%;
+}
+
+
+
+table{
+    text-align: center;
+}
+
+#registro{
+    margin-left: 40%;
+}
+
+#repositorio1{
+    float:right;  
+}
+
+#err{
+    color:red;
+}
+
+#repositorio2{
+    float:left;
+    
+}
+
+aside{
+    background-color: aliceblue;
+}
+
+
+
+#carrusel{
+    text-align: center;
+}
+
+
+
+
+#salir{
+    float: right;
+    margin-top: -3%;
+}
+
+footer{
+    margin-top: 5%;
+    background-color:  #526493;
+    overflow: hidden;
+    bottom: 0;
+    width: 100%;
+}
+
+li:hover{
+    background-color: aliceblue;
+    
+}
+
+
+
+a{
+    color:red;
+}
+
+#encuesta{
+    width: 25%;
+    margin-left: 38%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+main{
+    background-color: cadetblue;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10%;
+    padding:1%;
+    border-radius: 7px;
+}
+
+article{
+    background-color: cadetblue;
+}
+
+form{
+    margin: 0 auto;
+}
+
+#myNavbar{
+    background-color: #526493;
+}
+#entrar{
+     background-color: #526493;
+}
+
+
