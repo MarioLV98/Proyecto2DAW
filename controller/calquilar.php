@@ -10,7 +10,8 @@ if (!isset($_SESSION['usuario'])) {//Si no hay usuario en lasesion redirige a lo
 
         $valentrega = noVacio($_POST['entrega']);
         $valrecogida = noVacio($_POST['recogida']);
-        if ($valrecogida != "" || $valentrega != "") {
+        $fechas = fechaMayor($_POST['entrega'],$_POST['recogida']);
+        if ($valrecogida != "" || $valentrega != ""|| $fechas!="") {
            echo "";
         }else{//Si todo va bien alquila 
             $vehiculos->alquilarVehiculo($_SESSION['usuario']->getCodUsuario(), $_POST['recogida'], $_POST['entrega'], $_GET['matricula']);

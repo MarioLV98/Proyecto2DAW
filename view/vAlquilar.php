@@ -1,6 +1,6 @@
 <div class="container">
   
-        <form action="index.php?matricula=<?php echo $_GET['matricula'] ?>&location=alquilar" method="post">
+        <form action="index.php?matricula=<?php echo $_GET['matricula'] ?>&location=alquilar" id="alquilarvehiculo" method="post">
                 <?php
 
     echo "<div class='col-md-12 col-sm-12 col-xs-12 well'>";
@@ -32,8 +32,9 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="form-group col-md-3 col-sm-3 col-xs-12">
             <label for="recogida">Desde</label>
-            <input class="form-control" type="date" name="recogida" min="<?php echo date('20y-m-d') ?>" value="<?phpif(isset($_POST['alq'])){echo $_POST['recogida'] ;} ?>">
-            <p id="err"><?php if(isset($_POST['alq'])){ echo noVacio($_POST['recogida']); } ?></p>
+            <input class="form-control" type="date" name="recogida" min="<?php echo date('20y-m-d') ?>" value="<?php if(isset($_POST['alq'])){echo $_POST['recogida'];} ?>" >
+            <p id="err"><?php if(isset($_POST['alq'])){ if(noVacio($_POST['recogida'])==""){echo fechaMayor($_POST['entrega'], $_POST['recogida']);}else{ echo noVacio($_POST['recogida']);}  } ?></p>
+           
             </div>
             </div>
                    
@@ -41,13 +42,14 @@
             <div class="form-group col-md-3 col-sm-3 col-xs-12">        
             <label for="entrega">Hasta</label>
             <input class="form-control" type="date" name="entrega" value="<?php if(isset($_POST['alq'])){echo $_POST['entrega'];} ?>">
-            <p id="err"><?php if(isset($_POST['alq'])){ echo noVacio($_POST['entrega']); } ?></p>
+            <p id="err"><?php if(isset($_POST['alq'])){ if(noVacio($_POST['entrega'])==""){echo fechaMayor($_POST['entrega'], $_POST['recogida']);}else{ echo noVacio($_POST['entrega']);}  }?></p>
+           
             </div>
             </div>
                     <br>
                     
-            <input class="btn btn-primary" type="submit" name="alq" value="Alquilar" <?php echo $disabled ?>>
-            <input class="btn btn-warning" type="submit" name="volver" value="Volver">
+            <input class="btn btn-primary" id="alquilar" type="submit" name="alq" value="Alquilar" <?php echo $disabled ?>>
+            <input class="btn btn-warning" id="volver" type="submit" name="volver" value="Volver">
             <?php  if($vehiculos->getCodUsuario()==$_SESSION['usuario']->getCodUsuario()){
                 echo "<input class='btn btn-danger' type='submit' name='cancelar' value='Cancelar Alquiler'>" ;
                 echo " ";
@@ -57,13 +59,6 @@
         </form>
  
 </div> 
-   
-
-
-
-
-
-
 
 
 

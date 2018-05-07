@@ -167,11 +167,6 @@
         }
     }
 
-
-
-
-
-
     function salir() {
         console.log("salir");
         window.location.href = "index.php?location=admin&page=1";

@@ -23,29 +23,57 @@
                 <div id="carrusel" class="carousel-inner">
                     <div class="item active">
                         <img src="webroot/cars/208gti.jpg" class="img-responsive"  style="width:100%; height: 400px;">
+                        <div class="carousel-caption">
+                        <h3>208 Gti</h3>
+                        <p>Pruebalo!</p>
+                    </div>
                     </div>
 
                     <div class="item">
                         <img src="webroot/cars/a7.jpg" class="img-responsive"  style="width:100%; height: 400px;">
+                        <div class="carousel-caption">
+                        <h3>Audi A7</h3>
+                        <p>Pruebalo!</p>
+                    </div>
                     </div>
 
                     <div class="item">
                         <img src="webroot/cars/c63.jpg" class="img-responsive"  style="width:100%;height: 400px;">
+                        <div class="carousel-caption">
+                        <h3>Mercedes C63 AMG</h3>
+                        <p>Pruebalo!</p>
+                    </div>
                     </div>
 
                     <div class="item">
                         <img src="webroot/cars/fiesta.jpg" class="img-responsive"  style="width:100%;height: 400px;">
+                        <div class="carousel-caption">
+                        <h3>Ford Fiesta</h3>
+                        <p>Pruebalo!</p>
+                    </div>
                     </div>
 
                     <div class="item">
                         <img src="webroot/cars/partner.png" class="img-responsive" style="width:100%;height: 400px;">
+                        <div class="carousel-caption">
+                        <h3>Peugeot Parthner</h3>
+                        <p>Pruebalo!</p>
+                    </div>
                     </div>
 
                     <div class="item">
                         <img src="webroot/cars/s40.jpg" class="img-responsive"  style="width:100%;height: 400px;">
+                        <div class="carousel-caption">
+                        <h3>Volvo S90</h3>
+                        <p>Pruebalo!</p>
+                    </div>
                     </div>
                     <div class="item">
                         <img src="webroot/cars/trasit.jpg" class="img-responsive"  style="width:100%; height: 400px;">
+                        <div class="carousel-caption">
+                        <h3>Ford Transit</h3>
+                        <p>Pruebalo!</p>
+                    </div>
                     </div>
                 </div>
 

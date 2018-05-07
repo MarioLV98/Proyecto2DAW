@@ -217,6 +217,18 @@ function noVacio($valor){
     return $valida; 
 }
 
-
+function fechaMayor($valor,$valor2){
+   $f1=strtotime($valor);
+   $f2= strtotime($valor2);
+   
+   if($f2>$f1){
+       $valida="La fecha de entrega es menor que la de recogida";
+   }else if($f2==$f1){
+       $valida="El periodo de alquiler ha de ser de un dia como minimo";
+   }else {
+       $valida= "";
+   }
+    return $valida; 
+}
 
 ?>
