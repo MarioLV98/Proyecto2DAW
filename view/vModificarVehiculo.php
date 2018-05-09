@@ -1,7 +1,7 @@
 
 <div class="container well">
 
-    <form action="index.php?matriculamod=<?PHP echo $_GET['matriculamod'] ?>&location=modificarvehiculo" id="formulario" method="post" enctype="multipart/form-data">
+    <form action="index.php?matriculamod=<?PHP echo $_GET['matriculamod'] ?>&location=modificarvehiculo" id="modificarvehiculo" method="post" enctype="multipart/form-data">
 
         <?php
         $vehiculos = Vehiculo::obtenerVehiculo($_GET['matriculamod']);
@@ -18,18 +18,20 @@
         } else {
             echo $vehiculos->getMarca();
         }
-        ?>">
+        ?>" required>
+                <p id="0"></p>
             </div>
             <br>
             <div class="form-group">
                 <label for="matricula">Matricula</label>
-                <input class="form-control" type="text" name="matricula" value="<?php echo $vehiculos->getMatricula(); ?>" readonly="">
+                <input class="form-control" type="text" name="matricula" value="<?php echo $vehiculos->getMatricula(); ?>" readonly="" required>
+                 <p id="1"></p>
             </div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="form-group">
                 <label for="tipo">Codigo Cliente</label>
-                <select class="form-control" name="tipo">
+                <select class="form-control" name="tipo" required>
                     <option value="utilitario"<?php if ($vehiculos->getTipo() == 'utilitario') {
                     echo "selected";
                 } ?>>Utilitario</option>
@@ -43,6 +45,7 @@
                     echo "selected";
                 } ?>>Turismo</option>
                 </select>
+                 <p id="2"></p>
             </div>
             <br>
             <div class="form-group">
@@ -53,8 +56,8 @@
                 } else {
                     echo $vehiculos->getPrecio();
                 }
-        ?>">
-
+        ?>" required>
+ <p id="3"></p>
             </div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">    
@@ -66,8 +69,8 @@
                 } else {
                     echo $vehiculos->getPlazas();
                 }
-        ?>">
-
+        ?>" required>
+                 <p id="4"></p>
             </div>
             <br>
             <div class="form-group">
@@ -78,8 +81,8 @@
                        } else {
                            echo $vehiculos->getMaletas();
                        }
-        ?>">
-
+        ?>" required>
+                 <p id="5"></p>
             </div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">    
@@ -98,8 +101,8 @@
 
 
         <div class="col-md-4 col-sm-4 col-xs-12">    
-            <input class="btn btn-primary" type="submit" name="modificar" value="Modificar vehiculo"/>
-            <input class="btn btn-warning" type="submit" name="cancelar" value="Cancelar"/>
+            <input class="btn btn-primary" id="modificar" type="submit" name="modificar" value="Modificar vehiculo"/>
+            <input class="btn btn-warning" id="volver" type="submit" name="cancelar" value="Cancelar"/>
             <br>
 
 
@@ -120,3 +123,40 @@
 </div>
 </div>
 
+<script>
+window.onload = function () {
+
+        var modificar = document.getElementById("modificar");
+        modificar.addEventListener("click", validar);
+        var volver = document.getElementById("volver");
+        volver.addEventListener("click", salir);
+    }
+
+    function validar(evt) {
+        console.log("entramos");
+        var error = false;
+
+        var formulario = document.getElementById("modificarvehiculo");
+        console.log(formulario.length);
+        for (i = 0; i < formulario.length - 4; i++) {
+
+            document.getElementById(i).innerHTML = "";
+            if (!formulario.elements[i].checkValidity()) {
+
+                document.getElementById(i).innerHTML = formulario.elements[i].validationMessage.fontcolor("red");
+
+                error = true;
+            }
+        }
+
+
+        if (!error) {
+            formulario.submit();
+        }
+    }
+
+    function salir() {
+        console.log("salir");
+        window.location.href = "index.php?location=admin&page=1";
+    }
+</script>

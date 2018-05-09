@@ -9,6 +9,7 @@
                     <div class="form-group has-success">
                         <input class="form-control" type="text" name="matricula" value="<?php echo $_GET['MatriculaBorr'] ?>" disabled><br />
                     </div>
+                    <p id="err"><?php if(isset($validacionborrado)!=""){echo $validacionborrado;}?></p>
                     <p>Desea borrar el vehiculo?</p>
              
                     <input class="btn btn-danger" type="submit" name="borrar" value="Borrar vehiculo"/>

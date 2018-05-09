@@ -11,14 +11,14 @@
 
         <div class="well">
             <h4>Editar usuario</h4>
-            <div class="col-md-2 col-sm-2 col-xs-12 form-group has-success">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group has-success">
             <label for="usuario">Usuario:</label><br />
             
                 <input class="form-control" type="text" name="usuario" value="<?php echo $_SESSION['usuario']->getCodUsuario(); ?>" readonly><br />
                 <p id="err"></p>
             </div>
 
-            <div class="col-md-2 col-sm-2 col-xs-12 form-group <?php if (isset($_POST['modifica'])) {
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group <?php if (isset($_POST['modifica'])) {
             if ($pass == "") {
                 echo "has-success";
             } else {
@@ -34,7 +34,7 @@
                         echo $valida = validarCadenaAlfanumerica($_POST['contrasenaregistro'], 3, 100);
                     } ?></p>
             </div>
-            <div class="col-md-2 col-sm-2 col-xs-12 form-group <?php if (isset($_POST['modifica'])) {
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group <?php if (isset($_POST['modifica'])) {
                         if ($desc == "") {
                             echo "has-success";
                         } else {
