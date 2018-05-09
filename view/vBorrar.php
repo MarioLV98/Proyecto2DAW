@@ -1,12 +1,13 @@
-<div class="container">
+<div class="container well">
 <form action="index.php?location=borrar" id="formulario" method="post">
 
-    <div class="well">
+    <div class="col-md-4 col-sm-4 col-xs-12"></div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
                     <h4>Borrar usuario</h4>
                     <label for="usuario">Usuario:</label><br />
-                    <div class="col-md-2 col-sm-2 col-xs-12 form-group has-success">
+                    <div class="form-group has-success">
                         <input class="form-control" type="text" name="usuarioborrar" value="<?php echo $_SESSION['usuario']->getCodUsuario(); ?>" readonly><br />
-                    <p id="err"></p>
+                        <p id="err"><?php if(isset($_POST['borra'])){echo Usuario::vehiculosDeUsuario($_SESSION['usuario']->getCodUsuario());}?></p>
                     </div>
 
                     

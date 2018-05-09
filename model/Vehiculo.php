@@ -430,10 +430,10 @@ class Vehiculo {
      * @param string $tipo tipo del vehiculo
      * @return \Vehiculo
      */
-    public static function buscarVehiculosMultiBusqueda($marca, $tipo) {
+    public static function buscarVehiculosMultiBusqueda($marca, $tipo,$operando, $precio) {
 
         $vehiculos = null;
-        $vehiculo = VehiculoPDO::buscarVehiculosMultiBusqueda($marca, $tipo);
+        $vehiculo = VehiculoPDO::buscarVehiculosMultiBusqueda($marca, $tipo, $operando, $precio);
         if (!empty($vehiculo)) {
 
             for ($i = 0; $i < count($vehiculo); $i++) {

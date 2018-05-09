@@ -249,6 +249,33 @@ public static function comprobarYaExistente($valor){
     
      return $valida;
 }
+/**
+ * Funcion para comprobar los vehiculos en alquiler antes de borrar
+ * 
+ * Ultima revision 09/05/2018
+ * Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar
+ * 
+ * @param type $valor validacion
+ * @return string con la validacion
+ */
+public static function vehiculosDeUsuario($valor){
+     $valida = "";
+     
+     if(empty($valor)){
+         $valida="No ha introducido ningun valor";
+     }else{
+         
+         $consulta = "select * from Vehiculos where codUsuario ='$valor'";
+         $resultado = DBPDO::ejecutarConsulta($consulta, [$valor]);
+         if($resultado->rowCount()==1){
+       
+         $valida="Este usuario no puede ser borrado ya que tiene vehiculos alquilados";
+         
+        } 
+     }
+    
+     return $valida;
+}
     
 
 }

@@ -148,9 +148,9 @@ class VehiculoPDO {
      * @param string $tipo tipo dee vehiculo que le estamos pasando
      * @return array $VEHICULO array de vehiculos
      */
-    public static function buscarVehiculosMultiBusqueda($marca, $tipo) {
+    public static function buscarVehiculosMultiBusqueda($marca, $tipo,$operando,$precio) {
 
-        $consulta = "Select * from Vehiculos where marca like ? and tipo like ?";
+        $consulta = "Select * from Vehiculos where marca like ? and tipo like ? and precio $operando $precio";
         $arrayVehiculo = [];
         $resultado = DBPDO::ejecutarConsulta($consulta, ['%' . $marca . '%', '%' . $tipo . '%']);
         $VEHICULO = [];

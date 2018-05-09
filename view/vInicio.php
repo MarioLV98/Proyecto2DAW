@@ -1,52 +1,80 @@
 <form id="inicio" action="index.php?page=<?php echo $_SESSION['page'] ?>&location=inicio" method="post">
     <div class="container-fluid">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <img style="width: 70%; height: 50%;" src="webroot/Logo.PNG">
+            </div>
 
-        <div class="col-md-2 col-sm-2 col-xs-12 pull-right well" style="background-color: orangered">
-            <button class="btn btn-primary btn-xs" type="submit" name="salir" value="salir">Cerrar sesion</button>
-            <button class="btn btn-warning btn-xs" type="submit" name="modificar" value="modificar">Editar usuario</button>
-            <button class="btn btn-danger btn-xs" type="submit" name="borrar" value="borrar">Borrar usuario</button>
-        </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-12 pull-right well" style="background-color: orangered">
+                <button class="btn btn-primary btn-xs" type="submit" name="salir" value="salir">Cerrar sesion</button>
+                <button class="btn btn-warning btn-xs" type="submit" name="modificar" value="modificar">Editar usuario</button>
+                <button class="btn btn-danger btn-xs" type="submit" name="borrar" value="borrar">Borrar usuario</button>
+            </div>
+        </div>    
         <br>
         <div class="col-md-12 col-sm-12 col-xs-12 well" style="background-color:cornflowerblue;">
             <br>
 
             <strong>Criterio de busqueda:</strong>
             <br>
-
-            <div class="col-md-2 col-sm-2 col-xs-12">
-                <input type="radio" name="tipovehiculo" value="utilitario"><strong> Utilitario</strong>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <input  id="cr1" type="radio" name="tipovehiculo" value="utilitario" <?php if(isset($_POST['buscar'])){if(isset($_POST['tipovehiculo'])){if($_POST['tipovehiculo']=="utilitario"){echo "checked";}}}?>><strong> Utilitario</strong>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <input id="cr2" type="radio" name="tipovehiculo" value="turismo" <?php if(isset($_POST['buscar'])){if(isset($_POST['tipovehiculo'])){if($_POST['tipovehiculo']=="turismo"){echo "checked";}}}?>><strong> Turismo</strong>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <input id="cr3" type="radio" name="tipovehiculo" value="deportivo" <?php if(isset($_POST['buscar'])){if(isset($_POST['tipovehiculo'])){if($_POST['tipovehiculo']=="deportivo"){echo "checked";}}}?>><strong> Deportivo</strong>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <input id="cr4" type="radio" name="tipovehiculo" value="furgoneta" <?php if(isset($_POST['buscar'])){if(isset($_POST['tipovehiculo'])){if($_POST['tipovehiculo']=="furgoneta"){echo "checked";}}}?>><strong> Furgoneta</strong>
+                </div>
             </div>
-            <div class="col-md-2 col-sm-2 col-xs-12">
-                <input type="radio" name="tipovehiculo" value="turismo"><strong> Turismo</strong>
-            </div>
-            <div class="col-md-2 col-sm-2 col-xs-12">
-                <input type="radio" name="tipovehiculo" value="deportivo"><strong> Deportivo</strong>
-            </div>
-            <div class="col-md-2 col-sm-2 col-xs-12">
-                <input type="radio" name="tipovehiculo" value="furgoneta"><strong> Furgoneta</strong>
+            <div class="col-md-4 col-sm-4 col-xs-12 pull-right">
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <input id="cr5" type="radio" name="precio" value="<=" <?php if(isset($_POST['buscar'])){if(isset($_POST['precio'])){if($_POST['precio']=="<="){echo "checked";}}}?>><strong> Hasta</strong>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <input id="cr6" type="radio" name="precio" value=">=" <?php if(isset($_POST['buscar'])){if(isset($_POST['precio'])){if($_POST['precio']==">="){echo "checked";}}}?>><strong> Desde</strong>
+                </div>
             </div>
             <br>
             <hr>
             <br>
-            <div class="form-group">
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control" name="busqueda" value="" placeholder="Marca y modelo">
-                </div>
-           
-            <input class="btn btn-info" type="submit" name="buscar" value="Buscar">
-             </div>
 
+            <div class="form-group col-md-3 col-sm-3 col-xs-12">
+                <input id="marca" type="text" class="form-control" name="busqueda" value="<?php if(isset($_POST['buscar'])){echo $_POST['busqueda'];}?>" placeholder="Marca y modelo">
+            </div>
+
+            <div class="col-md-5 col-sm-5 col-xs-12"></div>
+
+            <div class="form-group col-md-2 col-sm-2 col-xs-12">    
+                <input id="precio" type="number" class="form-control" name="busquedaprecio" value="<?php if(isset($_POST['buscar'])){echo $_POST['busquedaprecio'];}?>" placeholder="Precio">    
+            </div>
+            <div class="form-group col-md-2 col-sm-2 col-xs-12"></div>
+
+            <div class="col-md-5 col-sm-5 col-xs-12"></div>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <div class="btn-group  btn-group-lg">
+                    <input class="btn btn-info" type="submit" name="buscar" value="Buscar">
+                    <input id="limpiar" class="btn btn-danger" type="submit" name="limpiar" value="Limpiar campos">
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12"></div>
         </div>
 
-
     </div>
+
+
+
     <?php
     if (isset($_POST['pagi']) || $_SESSION['pag'] == "NO") {
         $pag = "checked";
     } else {
         $pag = "";
     }
-    
     ?>
     <div class="container-fluid">
         <input type="checkbox" id="paginacion" value="pagi" name="pagi" <?php echo $pag ?>><strong>Mostrar todo</strong> 
@@ -121,4 +149,18 @@
             hrefTextPrefix: 'index.php?location=inicio&page='
         });
     });
+    
+    $('#limpiar').on('click', function () {
+        $('#cr1').prop('checked', false);
+        $('#cr2').prop('checked', false);
+        $('#cr3').prop('checked', false);
+        $('#cr4').prop('checked', false);
+        $('#cr5').prop('checked', false);
+        $('#cr6').prop('checked', false);
+        $('#marca').val("");
+        $('#precio').val("");
+          
+          
+        
+    })
 </script>

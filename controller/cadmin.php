@@ -34,14 +34,26 @@ if (!isset($_SESSION['usuario'])) {//Si no hay usuario en lasesion redirige a lo
         
         //Si se pulsa buscar dependiendo de los parametros buscamos y se desactiva la paginacion, si no por defecto lista
       if(isset($_POST['buscar'])){
-            if(isset($_POST['tipovehiculo'])&&isset($_POST['busqueda'])){
-                $vehiculos = Vehiculo::buscarVehiculosMultiBusqueda($_POST['busqueda'], $_POST['tipovehiculo']);
+          if(isset($_POST['tipovehiculo'])!=""&&$_POST['busqueda']!=""&&isset($_POST['precio'])!=""&&$_POST['busquedaprecio']!=""){
+                $vehiculos = Vehiculo::buscarVehiculosMultiBusqueda($_POST['busqueda'], $_POST['tipovehiculo'],$_POST['precio'],$_POST['busquedaprecio']);
                 $_SESSION['pag']="NO";
-            }elseif (isset($_POST['tipovehiculo'])) {
-                $vehiculos = Vehiculo::buscarVehiculosMultiBusqueda('%', $_POST['tipovehiculo']);
+            }elseif(isset ($_POST['tipovehiculo'])!=""&&$_POST['busqueda']!="") {
+                $vehiculos = Vehiculo::buscarVehiculosMultiBusqueda($_POST['busqueda'], $_POST['tipovehiculo'],'>=',0);
                 $_SESSION['pag']="NO";
-            }elseif (isset($_POST['busqueda'])) {
-                $vehiculos = Vehiculo::buscarVehiculosMultiBusqueda($_POST['busqueda'], '%');
+            }elseif($_POST['busqueda']!=""&&isset ($_POST['precio'])!=""&&$_POST['busquedaprecio']!="") {
+                $vehiculos = Vehiculo::buscarVehiculosMultiBusqueda($_POST['busqueda'], '%',$_POST['precio'],$_POST['busquedaprecio']);
+                $_SESSION['pag']="NO";
+            }elseif(isset ($_POST['tipovehiculo'])!=""&&isset ($_POST['precio'])!=""&&$_POST['busquedaprecio']!="") {
+                $vehiculos = Vehiculo::buscarVehiculosMultiBusqueda('%', $_POST['tipovehiculo'],$_POST['precio'],$_POST['busquedaprecio']);
+                $_SESSION['pag']="NO";
+            }elseif(isset ($_POST['precio'])!=""&&$_POST['busquedaprecio']!="") {
+                $vehiculos = Vehiculo::buscarVehiculosMultiBusqueda('%', '%',$_POST['precio'],$_POST['busquedaprecio']);
+                $_SESSION['pag']="NO";
+            }elseif (isset ($_POST['tipovehiculo'])!="") {
+                $vehiculos = Vehiculo::buscarVehiculosMultiBusqueda('%', $_POST['tipovehiculo'],'>=',0);
+                $_SESSION['pag']="NO";
+            }elseif ($_POST['busqueda']!="") {
+                $vehiculos = Vehiculo::buscarVehiculosMultiBusqueda($_POST['busqueda'], '%','>=',0);
                 $_SESSION['pag']="NO";
             }else{
                  $_SESSION['pag']="SI";

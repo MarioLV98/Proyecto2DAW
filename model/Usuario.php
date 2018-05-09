@@ -440,6 +440,20 @@ class Usuario {
         return UsuarioPDO::comprobarYaExistente($valor);
     }
     
+    /**
+ * Funcion para comprobar los vehiculos en alquiler antes de borrar
+ * 
+ * Ultima revision 09/05/2018
+ * Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar
+ * 
+ * @param type $valor validacion
+ * @return string con la validacion
+ */
+    
+    public static function vehiculosDeUsuario($valor){
+        return UsuarioPDO::vehiculosDeUsuario($valor);
+    }
+    
     
 
 
