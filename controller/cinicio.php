@@ -55,6 +55,9 @@ if (!isset($_SESSION['usuario'])) {//Si no hay usuario en lasesion redirige a lo
             }elseif ($_POST['busqueda']!="") {
                 $vehiculos = Vehiculo::buscarVehiculosMultiBusqueda($_POST['busqueda'], '%','>=',0);
                 $_SESSION['pag']="NO";
+            }elseif (isset ($_POST['misvehiculos'])!="") {
+                $vehiculos = Vehiculo::misVehiculos($_SESSION['usuario']->getCodUsuario());
+                $_SESSION['pag']="NO";
             }else{
                  $_SESSION['pag']="SI";
                  $vehiculos = Vehiculo::listarVehiculos($start_from, $limit);

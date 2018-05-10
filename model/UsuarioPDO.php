@@ -267,7 +267,7 @@ public static function vehiculosDeUsuario($valor){
          
          $consulta = "select * from Vehiculos where codUsuario ='$valor'";
          $resultado = DBPDO::ejecutarConsulta($consulta, [$valor]);
-         if($resultado->rowCount()==1){
+         if($resultado->rowCount()>=1){
        
          $valida="Este usuario no puede ser borrado ya que tiene vehiculos alquilados";
          

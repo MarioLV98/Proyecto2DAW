@@ -13,6 +13,7 @@ if (!isset($_SESSION['usuario'])) { //Si no hay usuario en lasesion redirige a l
                echo "";
            }else{//En caso contrario crea el vehiculo
                //Obtenemos la foto
+              
             $binario_nombre_temporal=$_FILES['foto']['tmp_name'];
             //La preparamos para subirla a la bd
             $binario_contenido = addslashes(fread(fopen($binario_nombre_temporal, "rb"), filesize($binario_nombre_temporal)));

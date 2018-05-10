@@ -568,5 +568,26 @@ class Vehiculo {
     public static function comprobarVehiculoYaExistente($valor){
         return VehiculoPDO::comprobarYaExistente($valor);
     }
+    
+    /**
+     * obtenerVehiculo
+     * 
+     * Ultima revision 04/05/2018
+     * Obtiene todos los datos de un vehiculo
+     * 
+     * @param string $codigo que servirá para identificar el vehiculo del usuario
+     * @return \Vehiculo array con datos del vehiculo
+     */
+    public static function misVehiculos($codigo) {
+        $vehiculos = null;
+        $vehiculo = VehiculoPDO::misVehiculos($codigo);
+        if (!empty($vehiculo)) {
+
+            for ($i = 0; $i < count($vehiculo); $i++) {
+                $vehiculos[$i] = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto']);
+            }
+        }
+        return $vehiculos;
+    }
 
 }

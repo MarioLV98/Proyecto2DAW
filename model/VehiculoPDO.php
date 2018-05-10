@@ -396,5 +396,45 @@ class VehiculoPDO {
 
         return $valida;
     }
+    
+    
+    /**
+     * Funcion para ver los vehiculos de un uusario
+     * 
+     * Ultima revision 26/04/2018
+     * Se crea la consulta y se le añaden los parametros que la clase DBPDO va a ejecutar, obtiene todos los datos de un vehiculo
+     * 
+     * @author Mario Labra Villar 
+     * @param string $codigo codigo de usuario que tienen los vehiculos
+     * @return array $VEHICULO array de vehiculos
+     */
+    public static function misVehiculos($codigo) {
+
+        $consulta = "Select * from Vehiculos where codUsuario= ?";
+        $arrayVehiculo = [];
+        $resultado = DBPDO::ejecutarConsulta($consulta, [$codigo]);
+        $VEHICULO = [];
+        $i = 0;
+        if ($resultado->rowCount() > 0) {
+
+            while ($objeto = $resultado->fetchObject()) {
+                $arrayVehiculo['matricula'] = $objeto->matricula;
+                $arrayVehiculo['codUsuario'] = $objeto->codUsuario;
+                $arrayVehiculo['marca'] = $objeto->marca;
+                $arrayVehiculo['plazas'] = $objeto->plazas;
+                $arrayVehiculo['maletas'] = $objeto->maletas;
+                $arrayVehiculo['descVehiculo'] = $objeto->descVehiculo;
+                $arrayVehiculo['precio'] = $objeto->precio;
+                $arrayVehiculo['recogida'] = $objeto->recogida;
+                $arrayVehiculo['entrega'] = $objeto->entrega;
+                $arrayVehiculo['tipo'] = $objeto->tipo;
+                $arrayVehiculo['foto'] = $objeto->foto;
+                $VEHICULO[$i] = $arrayVehiculo;
+                $i++;
+            }
+        }
+
+        return $VEHICULO;
+    }
 
 }

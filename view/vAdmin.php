@@ -94,10 +94,10 @@
                 <th>MATRICULA</th>
                 <th>MARCA</th>
                 <th>DESCRIPCION</th>
-                <th>NOMBRE</th>
                 <th>TIPO</th>
                 <th>PRECIO</th>
                 <th>PLAZAS</th>
+                <th>MALETAS</th>  
                 <th>Acciones Sobre vehiculo</th>
 
             </tr>

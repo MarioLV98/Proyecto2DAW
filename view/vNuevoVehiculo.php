@@ -136,34 +136,39 @@
     function validar(evt) {
         console.log("entramos");
         var error = false;
-
-        var formulario = document.getElementById("crearvehiculo");
-        console.log(formulario.length);
-        for (i = 0; i < formulario.length - 4; i++) {
+        
+        var formulariocreacion = document.getElementById("crearvehiculo");
+        console.log(formulariocreacion.length);
+        for (i = 0; i < formulariocreacion.length - 4; i++) {
 
             document.getElementById(i).innerHTML = "";
-            if (!formulario.elements[i].checkValidity()) {
+            if (!formulariocreacion.elements[i].checkValidity()) {
 
-                document.getElementById(i).innerHTML = formulario.elements[i].validationMessage.fontcolor("red");
+                document.getElementById(i).innerHTML = formulariocreacion.elements[i].validationMessage.fontcolor("red");
 
                 error = true;
+                
+                console.log(error);
             }
         }
 
-        var matricula = formulario.elements[1].value;
+        var matricula = formulariocreacion.elements[1].value;
         var reg_exp = /^[0-9]{4}[A-Z]{3}$/;
 
-        if (matricula != "") {
+        
+        if (matricula!="") {
             if (!reg_exp.test(matricula)) {
-
-                document.getElementById(1).innerHTML = "Matricula no valida formato 9999XXX".fontcolor("red");
-
+                console.log(error);
+                evt.preventDefault();
                 error = true;
+                document.getElementById(1).innerHTML = "Matricula no valida formato 9999XXX".fontcolor("red");  
             }
         }
-
+            
+             console.log(error);
         if (!error) {
-            formulario.submit();
+            
+            formulariocreacion.submit();
         }
     }
 

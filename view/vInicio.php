@@ -31,6 +31,7 @@
                 <div class="col-md-2 col-sm-2 col-xs-12">
                     <input id="cr4" type="radio" name="tipovehiculo" value="furgoneta" <?php if(isset($_POST['buscar'])){if(isset($_POST['tipovehiculo'])){if($_POST['tipovehiculo']=="furgoneta"){echo "checked";}}}?>><strong> Furgoneta</strong>
                 </div>
+
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12 pull-right">
                 <div class="col-md-2 col-sm-2 col-xs-12">
@@ -48,7 +49,7 @@
                 <input id="marca" type="text" class="form-control" name="busqueda" value="<?php if(isset($_POST['buscar'])){echo $_POST['busqueda'];}?>" placeholder="Marca y modelo">
             </div>
 
-            <div class="col-md-5 col-sm-5 col-xs-12"></div>
+            <div class="col-md-5 col-sm-5 col-xs-12"> <div class="col-md-8 col-sm-8 col-xs-12 pull-right"><input id="cr7" type="radio" name="misvehiculos" value="misvehiculos" <?php if(isset($_POST['buscar'])){if(isset($_POST['misvehiculos'])){if($_POST['misvehiculos']=="misvehiculos"){echo "checked";}}}?>><strong> Mis vehiculos</strong></div></div>
 
             <div class="form-group col-md-2 col-sm-2 col-xs-12">    
                 <input id="precio" type="number" class="form-control" name="busquedaprecio" value="<?php if(isset($_POST['buscar'])){echo $_POST['busquedaprecio'];}?>" placeholder="Precio">    
@@ -157,6 +158,7 @@
         $('#cr4').prop('checked', false);
         $('#cr5').prop('checked', false);
         $('#cr6').prop('checked', false);
+        $('#cr7').prop('checked', false);
         $('#marca').val("");
         $('#precio').val("");
           
