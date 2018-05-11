@@ -41,15 +41,15 @@
                     <input id="cr6" type="radio" name="precio" value=">=" <?php if(isset($_POST['buscar'])){if(isset($_POST['precio'])){if($_POST['precio']==">="){echo "checked";}}}?>><strong> Desde</strong>
                 </div>
             </div>
-            <br>
+            <div class="col-md-12 col-sm-12 col-xs-12">
             <hr>
-            <br>
+            </div>
 
             <div class="form-group col-md-3 col-sm-3 col-xs-12">
                 <input id="marca" type="text" class="form-control" name="busqueda" value="<?php if(isset($_POST['buscar'])){echo $_POST['busqueda'];}?>" placeholder="Marca y modelo">
             </div>
 
-            <div class="col-md-5 col-sm-5 col-xs-12"> <div class="col-md-8 col-sm-8 col-xs-12 pull-right"><input id="cr7" type="radio" name="misvehiculos" value="misvehiculos" <?php if(isset($_POST['buscar'])){if(isset($_POST['misvehiculos'])){if($_POST['misvehiculos']=="misvehiculos"){echo "checked";}}}?>><strong> Mis vehiculos</strong></div></div>
+            <div class="col-md-5 col-sm-5 col-xs-12"> <div class="col-md-8 col-sm-8 col-xs-12 pull-right"><input id="cr7" type="radio" name="misvehiculos" value="misvehiculos" <?php if(isset($_POST['buscar'])){if(isset($_POST['misvehiculos'])){if($_POST['misvehiculos']=="misvehiculos"){echo "checked";}}}?>><strong> Mis vehículos</strong></div></div>
 
             <div class="form-group col-md-2 col-sm-2 col-xs-12">    
                 <input id="precio" type="number" class="form-control" name="busquedaprecio" value="<?php if(isset($_POST['buscar'])){echo $_POST['busquedaprecio'];}?>" placeholder="Precio">    
@@ -57,13 +57,13 @@
             <div class="form-group col-md-2 col-sm-2 col-xs-12"></div>
 
             <div class="col-md-5 col-sm-5 col-xs-12"></div>
-            <div class="col-md-2 col-sm-2 col-xs-12">
-                <div class="btn-group  btn-group-lg">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div style="margin: 0 auto;" class="btn-group  btn-group-lg">
                     <input class="btn btn-info" type="submit" name="buscar" value="Buscar">
                     <input id="limpiar" class="btn btn-danger" type="submit" name="limpiar" value="Limpiar campos">
                 </div>
             </div>
-            <div class="col-md-5 col-sm-5 col-xs-12"></div>
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
         </div>
 
     </div>
@@ -102,7 +102,7 @@
             echo "<br>";
             echo "<img style='width:135px; height:120px;' class='img-responsive pull-right' id='red'  src='data:image/jpg;base64," . base64_encode($vehiculos[$i]->getFoto()) . " '>";
             echo "<p class='text-danger'>" . $vehiculos[$i]->getTipo() . "</p>";
-            echo "<p>Precio por dia: <br><strong>" . $vehiculos[$i]->getPrecio() . "€</strong></p>";
+            echo "<p>Precio por día: <br><strong>" . $vehiculos[$i]->getPrecio() . "€</strong></p>";
             echo "<p>Plazas: " . $vehiculos[$i]->getPlazas() . "</p>";
             echo "<p>Capacidad de maletas: " . $vehiculos[$i]->getMaletas() . "</p>";
             echo "<p class='text-$color'>Estado:  $estado </p>";

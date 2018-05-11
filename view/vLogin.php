@@ -92,7 +92,7 @@
         </div>
         <div id="info" class="col-xs-12 col-sm-4 col-md-4 well">
             <h1 class="text-success">Labra-Cars</h1>
-            <h3>Te ofrecemos una gran variedad de vehiculos<br> a un precio exclusivo que no <br> encontraras en cualquier sitio <br> si tienes dudas sobre nuestros <br>servicios no dudes en mandarnos un <a href="index.php?location=contacta" >correo</a><br>responderemos lo antes que <br> podamos, gracias por visitarnos</h3>
+            <h3>Te ofrecemos una gran variedad de vehículos<br> a un precio exclusivo que no <br> encontrarás en cualquier sitio. <br> Si tienes dudas sobre nuestros <br>servicios no dudes en mandarnos un <a href="index.php?location=contacta" >correo</a>,<br>responderemos lo antes <br> posible.<br> Gracias por visitarnos.</h3>
         </div>
         
         <br>
@@ -118,7 +118,7 @@
             echo "<br>";
             echo "<img style='width:135px; height:120px;' class='img-responsive pull-right' id='red'  src='data:image/jpg;base64," . base64_encode($vehiculos[$i]->getFoto()) . " '>";
             echo "<p class='text-danger'>" . $vehiculos[$i]->getTipo() . "</p>";
-            echo "<p>Precio por dia: <br><strong>" . $vehiculos[$i]->getPrecio() . "€</strong></p>";
+            echo "<p>Precio por día: <br><strong>" . $vehiculos[$i]->getPrecio() . "€</strong></p>";
             echo "<p>Plazas: " . $vehiculos[$i]->getPlazas() . "</p>";
             echo "<p>Capacidad de maletas: " . $vehiculos[$i]->getMaletas() . "</p>";
             echo "<p class='text-$color'>Estado:  $estado </p>";
