@@ -49,6 +49,7 @@ class VehiculoPDO {
                 $arrayVehiculo['entrega'] = $objeto->entrega;
                 $arrayVehiculo['tipo'] = $objeto->tipo;
                 $arrayVehiculo['foto'] = $objeto->foto;
+                 $arrayVehiculo['registro'] = $objeto->codRegistro;
                 $VEHICULO[$i] = $arrayVehiculo;
                 $i++;
             }
@@ -89,7 +90,9 @@ class VehiculoPDO {
                 $arrayVehiculo['entrega'] = $objeto->entrega;
                 $arrayVehiculo['tipo'] = $objeto->tipo;
                 $arrayVehiculo['foto'] = $objeto->foto;
+                 $arrayVehiculo['registro'] = $objeto->codRegistro;
                 $VEHICULO[$i] = $arrayVehiculo;
+                
                 $i++;
             }
         }
@@ -129,6 +132,7 @@ class VehiculoPDO {
                 $arrayVehiculo['entrega'] = $objeto->entrega;
                 $arrayVehiculo['tipo'] = $objeto->tipo;
                 $arrayVehiculo['foto'] = $objeto->foto;
+                 $arrayVehiculo['registro'] = $objeto->codRegistro;
                 $VEHICULO[$i] = $arrayVehiculo;
                 $i++;
             }
@@ -169,6 +173,7 @@ class VehiculoPDO {
                 $arrayVehiculo['entrega'] = $objeto->entrega;
                 $arrayVehiculo['tipo'] = $objeto->tipo;
                 $arrayVehiculo['foto'] = $objeto->foto;
+                 $arrayVehiculo['registro'] = $objeto->codRegistro;
                 $VEHICULO[$i] = $arrayVehiculo;
                 $i++;
             }
@@ -208,6 +213,7 @@ class VehiculoPDO {
                 $arrayVehiculo['entrega'] = $objeto->entrega;
                 $arrayVehiculo['tipo'] = $objeto->tipo;
                 $arrayVehiculo['foto'] = $objeto->foto;
+                $arrayVehiculo['registro'] = $objeto->codRegistro;
                 $VEHICULO[$i] = $arrayVehiculo;
                 $i++;
             }
@@ -228,11 +234,11 @@ class VehiculoPDO {
      * @param string $matricula matricula del vehiculo que se va alquilar
      * @return boolean $resultado
      */
-    public static function alquilarVehiculo($usuario, $recogida, $entrega, $matricula) {
+    public static function alquilarVehiculo($usuario, $recogida, $entrega, $matricula,$registro) {
 
         $modificacionOk = true;
-        $consulta = "update Vehiculos set codUsuario='$usuario',recogida='$recogida',entrega='$entrega' where matricula='$matricula'";
-        $resultado = DBPDO::ejecutarConsulta($consulta, [$usuario, $recogida, $entrega, $matricula]);
+        $consulta = "update Vehiculos set codUsuario='$usuario',recogida='$recogida',entrega='$entrega',codRegistro='$registro' where matricula='$matricula'";
+        $resultado = DBPDO::ejecutarConsulta($consulta, [$usuario, $recogida, $entrega, $matricula,$registro]);
 
 
         if ($resultado->rowCount() != 1) {
@@ -254,7 +260,7 @@ class VehiculoPDO {
     public static function liberarVehiculo($matricula) {
 
         $modificacionOk = true;
-        $consulta = "update Vehiculos set codUsuario=null,recogida=null,entrega=null where matricula='$matricula'";
+        $consulta = "update Vehiculos set codUsuario=null,recogida=null,entrega=null,codRegistro=null where matricula='$matricula'";
         $resultado = DBPDO::ejecutarConsulta($consulta, [$matricula]);
 
 

@@ -65,6 +65,8 @@ class Vehiculo {
      * @var $foto foto del vehiculo
      */
     private $foto;
+    
+    private $registro;
 
     /**
      *  Constructor
@@ -84,7 +86,7 @@ class Vehiculo {
      * @param string $tipo
      * @param mediumblob $foto
      */
-    public function __construct($matricula, $codUsuario, $marca, $plazas, $maletas, $descVehiculo, $precio, $recogida, $entrega, $tipo, $foto) {
+    public function __construct($matricula, $codUsuario, $marca, $plazas, $maletas, $descVehiculo, $precio, $recogida, $entrega, $tipo, $foto, $registro) {
         $this->matricula = $matricula;
         $this->codUsuario = $codUsuario;
         $this->marca = $marca;
@@ -96,9 +98,10 @@ class Vehiculo {
         $this->entrega = $entrega;
         $this->tipo = $tipo;
         $this->foto = $foto;
+        $this->registro = $registro;
     }
 
-    /**
+        /**
      * Matricula
      * 
      * Ultima revision 03/05/2018
@@ -221,7 +224,12 @@ class Vehiculo {
     public function getFoto() {
         return $this->foto;
     }
+    
+    public function getRegistro() {
+        return $this->registro;
+    }
 
+    
     /**
      * setMatricula
      * 
@@ -370,7 +378,7 @@ class Vehiculo {
         if (!empty($vehiculo)) {
 
             for ($i = 0; $i < count($vehiculo); $i++) {
-                $vehiculos[$i] = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto']);
+                $vehiculos[$i] = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto'],$vehiculo[$i]['registro']);
             }
         }
         return $vehiculos;
@@ -392,7 +400,7 @@ class Vehiculo {
         if (!empty($vehiculo)) {
 
             for ($i = 0; $i < count($vehiculo); $i++) {
-                $vehiculos[$i] = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto']);
+                $vehiculos[$i] = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto'],$vehiculo[$i]['registro']);
             }
         }
         return $vehiculos;
@@ -414,7 +422,7 @@ class Vehiculo {
         if (!empty($vehiculo)) {
 
             for ($i = 0; $i < count($vehiculo); $i++) {
-                $vehiculos[$i] = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto']);
+                $vehiculos[$i] = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto'],$vehiculo[$i]['registro']);
             }
         }
         return $vehiculos;
@@ -437,7 +445,7 @@ class Vehiculo {
         if (!empty($vehiculo)) {
 
             for ($i = 0; $i < count($vehiculo); $i++) {
-                $vehiculos[$i] = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto']);
+                $vehiculos[$i] = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto'],$vehiculo[$i]['registro']);
             }
         }
         return $vehiculos;
@@ -458,7 +466,7 @@ class Vehiculo {
         if (!empty($vehiculo)) {
 
             for ($i = 0; $i < count($vehiculo); $i++) {
-                $vehiculos = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto']);
+                $vehiculos = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto'], $vehiculo[$i]['registro'] );
             }
         }
         return $vehiculos;
@@ -476,8 +484,8 @@ class Vehiculo {
      * @param string $matricula matricula del vehiculo
      * @return boolean
      */
-    public function alquilarVehiculo($usuario, $recogida, $entrega, $matricula) {
-        return VehiculoPDO::alquilarVehiculo($usuario, $recogida, $entrega, $matricula);
+    public function alquilarVehiculo($usuario, $recogida, $entrega, $matricula,$registro) {
+        return VehiculoPDO::alquilarVehiculo($usuario, $recogida, $entrega, $matricula,$registro);
     }
 
     /**
@@ -584,7 +592,7 @@ class Vehiculo {
         if (!empty($vehiculo)) {
 
             for ($i = 0; $i < count($vehiculo); $i++) {
-                $vehiculos[$i] = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto']);
+                $vehiculos[$i] = new Vehiculo($vehiculo[$i]['matricula'], $vehiculo[$i]['codUsuario'], $vehiculo[$i]['marca'], $vehiculo[$i]['plazas'], $vehiculo[$i]['maletas'], $vehiculo[$i]['descVehiculo'], $vehiculo[$i]['precio'], $vehiculo[$i]['recogida'], $vehiculo[$i]['entrega'], $vehiculo[$i]['tipo'], $vehiculo[$i]['foto'],$vehiculo[$i]['registro']);
             }
         }
         return $vehiculos;

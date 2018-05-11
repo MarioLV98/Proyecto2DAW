@@ -24,7 +24,11 @@ if (!isset($_SESSION['usuario'])) {//Si no hay usuario en lasesion redirige a lo
         session_destroy();
         header('Location: index.php');
     } else {//Si no se cierra sesion nos carga la vista 
-  
+        
+        
+        if (isset($_POST['registro'])) {//Si se pulsa crear nos lleva a crear vehiculo
+            header('Location:index.php?location=listaregistro');
+        }
 
         if (isset($_POST['crear'])) {//Si se pulsa crear nos lleva a crear vehiculo
             header('Location:index.php?location=crearvehiculo');

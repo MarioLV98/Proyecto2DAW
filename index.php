@@ -11,6 +11,8 @@ require_once  'config/config.php';  //Ficheros de configuracion con las rutas
 require_once  'model/Usuario.php';  //Usuario
 require_once  'model/Vehiculo.php'; 
 require_once  'model/VehiculoPDO.php'; 
+require_once  'model/Registro.php'; 
+require_once  'model/RegistroPDO.php'; 
 require_once 'model/DBPDO.php'; //Ejecucion de los query
 include 'model/validacion.php'; //Libreria de validacion
 require_once 'model/UsuarioPDO.php';    //UsuarioPDO

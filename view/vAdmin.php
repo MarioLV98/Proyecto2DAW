@@ -81,7 +81,7 @@
             $pag = "";
         }
         ?>
-        <input class="btn btn-success" type="submit" name="crear" value="Nuevo vehiculo"><br>
+        <input class="btn btn-success" type="submit" name="crear" value="Nuevo vehiculo"><input class="btn btn-primary pull-right" type="submit" name="registro" value="Ver Registro"><br>
         <input type="checkbox" id="paginacion" value="paginacion" name="paginacion" <?php echo $pag ?>><strong> Mostrar todo</strong> 
     </div>
 </form>

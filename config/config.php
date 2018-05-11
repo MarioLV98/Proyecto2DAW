@@ -13,6 +13,7 @@ $controladores =[
     'crearvehiculo'=>'controller/ccrearvehiculo.php',
     'borrarvehiculo'=>'controller/cborrarvehiculo.php',
     'contacta'=>'controller/ccontacta.php',
+    'listaregistro'=>'controller/clistaregistros.php',
     
 
 ];
@@ -30,6 +31,7 @@ $vistas = [
     'crearvehiculo'=>'view/vNuevoVehiculo.php',
     'borrarvehiculo'=>'view/vBorrarVehiculo.php',
     'contacta'=>'view/vContacta.php',
+    'listaregistro'=>'view/vListaRegistros.php',
 
 ];
 ?>

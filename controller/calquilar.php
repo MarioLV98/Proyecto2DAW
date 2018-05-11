@@ -14,7 +14,30 @@ if (!isset($_SESSION['usuario'])) {//Si no hay usuario en lasesion redirige a lo
         if ($valrecogida != "" || $valentrega != ""|| $fechas!="") {
            echo "";
         }else{//Si todo va bien alquila 
-            $vehiculos->alquilarVehiculo($_SESSION['usuario']->getCodUsuario(), $_POST['recogida'], $_POST['entrega'], $_GET['matricula']);
+             $maximoreg=Registro::maxRegistros();
+            $vehiculos->alquilarVehiculo($_SESSION['usuario']->getCodUsuario(), $_POST['recogida'], $_POST['entrega'], $_GET['matricula'],$maximoreg[0]+1);
+            //Calculo del precio total
+    $entregacarro = New dateTime($_POST['entrega']);
+    $entregaformateada = $entregacarro->format('y-m-d');
+    //echo $entregaformateada;
+    $recogidacarro =  New DateTime($_POST['recogida']);
+    //echo $actual;
+        $recogidaformateada=$recogidacarro->format('y-m-d');
+    
+    $f_recogida= strtotime( $recogidaformateada);
+    $f_entega = strtotime($entregaformateada);
+    
+    $resta = $f_recogida-$f_entega;
+    
+    $dias= round($resta/86400);
+    
+    echo "dias". $dias;
+    
+    $positivo = $dias * -1;
+    
+    $total = $positivo * $vehiculos->getPrecio();
+           
+            Registro::crearRegistro( $maximoreg[0]+1,$_SESSION['usuario']->getCodUsuario(), $_GET['matricula'], $_SESSION['usuario']->getNombre(), $vehiculos->getMarca(),  $_POST['recogida'],  $_POST['entrega'], $vehiculos->getPrecio(), $total);
              header('Location:index.php?matricula='.$_GET['matricula'].'&location=alquilar');
         }
     }
@@ -45,8 +68,33 @@ if (!isset($_SESSION['usuario'])) {//Si no hay usuario en lasesion redirige a lo
     }
     }
     //Si se pulsa se cancela el alquiler
+    
+    $registro=Registro::obtenerRegistro($vehiculos->getRegistro());
      if (isset($_POST['cancelar'])) {
          $vehiculos->liberarVehiculo($_GET['matricula']);
+        
+         
+         
+            $cancelacion = New dateTime(date('y-m-d'));
+    $entregaformateadacancelacion = $cancelacion->format('y-m-d');
+    //echo $entregaformateada;
+    $recogidacancelacion =  New DateTime($vehiculos->getRecogida());
+    //echo $actual;
+        $recogidaformateadacancelacion=$recogidacancelacion->format('y-m-d');
+    
+    $f_recogidacancelacion= strtotime($recogidaformateadacancelacion);
+    $f_entegacancelacion = strtotime($entregaformateadacancelacion);
+    
+    $restacancelacion = $f_recogidacancelacion-$f_entegacancelacion;
+    
+    $diascancelacion= round($restacancelacion/86400);
+    
+ 
+    
+    $positivocancelacion = $diascancelacion * -1;
+    
+    $totalcancelacion = $positivocancelacion * $vehiculos->getPrecio();
+         $registro->modificarRegistro($vehiculos->getRegistro(), date('y-m-d'), $totalcancelacion);
          header('Location:index.php?matricula='.$_GET['matricula'].'&location=alquilar');
      }
      //Si se pulsa la factura se genera la factura
