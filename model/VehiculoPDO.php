@@ -435,6 +435,7 @@ class VehiculoPDO {
                 $arrayVehiculo['entrega'] = $objeto->entrega;
                 $arrayVehiculo['tipo'] = $objeto->tipo;
                 $arrayVehiculo['foto'] = $objeto->foto;
+                $arrayVehiculo['registro'] = $objeto->codRegistro;
                 $VEHICULO[$i] = $arrayVehiculo;
                 $i++;
             }
